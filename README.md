@@ -1,4 +1,5 @@
-# multi-ldap [![NPM version](https://img.shields.io/npm/v/multi-ldap.svg?style=flat)](https://www.npmjs.org/package/multi-ldap) [![Dependency Status](http://img.shields.io/david/silverwind/multi-ldap.svg?style=flat)](https://david-dm.org/silverwind/multi-ldap)
+# multi-ldap
+[![](https://img.shields.io/npm/v/multi-ldap.svg?style=flat)](https://www.npmjs.org/package/multi-ldap) [![](https://img.shields.io/npm/dm/multi-ldap.svg)](https://www.npmjs.org/package/multi-ldap) [![](https://api.travis-ci.org/silverwind/multi-ldap.svg?style=flat)](https://travis-ci.org/silverwind/multi-ldap)
 > [ldapjs](https://github.com/mcavage/node-ldapjs) client wrapper with support for multiple servers
 
 Provides the same API as [ldapjs](https://github.com/mcavage/node-ldapjs), except for the `createClient` method which takes `opts, callback` arguments. The callback then returns `err, client`. Servers will be queried in parallel, with the fastest responding server being chosen.
