@@ -10,7 +10,7 @@ module.exports.createClient = function(opts, cb) {
   } else {
     cb = onetime(cb);
     const clients = [];
-    let errors = {};
+    const errors = {};
 
     opts.url.forEach(function(url) {
       const client = createClient(Object.assign({}, opts, {url}));
@@ -28,7 +28,7 @@ module.exports.createClient = function(opts, cb) {
         });
       });
 
-      let _deadConnection = function(dead) {
+      const deadConnection = function(dead) {
         clients.some(function(client, i) {
           if (client.url.href === dead.url.href) {
             clients.splice(i, 1);
@@ -42,17 +42,17 @@ module.exports.createClient = function(opts, cb) {
 
       client.on("connectTimeout", function() {
         errors[url] = "timed out";
-        _deadConnection(this);
+        deadConnection(this);
       });
 
       client.on("connectError", function(err) {
         errors[url] = "connection error : " + err.message;
-        _deadConnection(this);
+        deadConnection(this);
       });
 
       client.on("error", function(err) {
         errors[url] = "error : " + err.message;
-        _deadConnection(this);
+        deadConnection(this);
       });
     });
   }

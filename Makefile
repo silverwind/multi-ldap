@@ -1,6 +1,9 @@
 lint:
 	eslint *.js
 
+test:
+	$(MAKE) lint
+
 publish:
 	git push -u --tags origin master
 	npm publish
@@ -23,4 +26,4 @@ patch: lint npm-patch publish
 minor: lint npm-minor publish
 major: lint npm-major publish
 
-.PHONY: lint publish update npm-patch npm-minor npm-major patch minor major
+.PHONY: lint test publish update npm-patch npm-minor npm-major patch minor major
