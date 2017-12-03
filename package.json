@@ -5,6 +5,9 @@
   "description": "ldapjs client wrapper with support for multiple servers",
   "repository": "silverwind/multi-ldap",
   "license": "BSD-2-Clause",
+  "scripts": {
+    "test": "make test"
+  },
   "keywords": [
     "ldap",
     "multiple",
@@ -19,5 +22,9 @@
   "dependencies": {
     "ldapjs": "https://github.com/SeanPlusPlus/node-ldapjs/tarball/00b44fe0cbf4aca3680af8c0662d38570122fcbf",
     "onetime": "^2.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.12.1",
+    "updates": "^1.3.0"
   }
 }
