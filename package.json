@@ -20,7 +20,7 @@
     "index.js"
   ],
   "dependencies": {
-    "ldapjs": "https://github.com/SeanPlusPlus/node-ldapjs/tarball/00b44fe0cbf4aca3680af8c0662d38570122fcbf",
+    "ldapjs": "^1.0.2",
     "onetime": "^2.0.1"
   },
   "devDependencies": {
