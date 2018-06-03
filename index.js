@@ -4,7 +4,7 @@ module.exports = require("ldapjs");
 const onetime = require("onetime");
 const createClient = module.exports.createClient;
 
-module.exports.createClient = function(opts, cb) {
+module.exports.createClient = (opts, cb) => {
   if (!opts || !opts.url || !Array.isArray(opts.url) || opts.url.length < 2) {
     cb(null, createClient(opts));
   } else {
@@ -12,24 +12,24 @@ module.exports.createClient = function(opts, cb) {
     const clients = [];
     const errors = {};
 
-    opts.url.forEach(function(url) {
+    opts.url.forEach(url => {
       const client = createClient(Object.assign({}, opts, {url}));
       clients.push(client);
 
-      client.on("connect", function() {
+      client.on("connect", () => {
         const winner = this;
         cb(null, winner);
 
         // destroy other clients
-        clients.forEach(function(client) {
+        clients.forEach(client => {
           if (client.url.href !== winner.url.href) {
             client.destroy();
           }
         });
       });
 
-      const deadConnection = function(dead) {
-        clients.some(function(client, i) {
+      const deadConnection = dead => {
+        clients.some((client, i) => {
           if (client.url.href === dead.url.href) {
             clients.splice(i, 1);
             return true;

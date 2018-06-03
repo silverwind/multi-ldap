@@ -14,7 +14,7 @@
     "servers"
   ],
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "files": [
     "index.js"
@@ -24,7 +24,8 @@
     "onetime": "^2.0.1"
   },
   "devDependencies": {
-    "eslint": "^4.12.1",
-    "updates": "^1.3.0"
+    "eslint": "^4.19.1",
+    "eslint-config-silverwind": "^1.0.42",
+    "updates": "^3.0.0"
   }
 }
