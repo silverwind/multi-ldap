@@ -1,12 +1,15 @@
-lint:
-	eslint *.js
+BIN:=node_modules/.bin
+
+test:
+	$(BIN)/eslint --color --quiet *.js
+	node --trace-deprecation --throw-deprecation --trace-warnings test.js
 
 publish:
 	git push -u --tags origin master
 	npm publish
 
 update:
-	ncu --packageFile package.json -ua
+	$(BIN)/updates -u
 	rm -rf node_modules
 	yarn
 
@@ -19,8 +22,8 @@ npm-minor:
 npm-major:
 	npm version major
 
-patch: lint npm-patch publish
-minor: lint npm-minor publish
-major: lint npm-major publish
+patch: test npm-patch publish
+minor: test npm-minor publish
+major: test npm-major publish
 
-.PHONY: lint publish update npm-patch npm-minor npm-major patch minor major
+.PHONY: test publish update patch minor major npm-patch npm-minor npm-major
