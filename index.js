@@ -16,8 +16,8 @@ module.exports.createClient = (opts, cb) => {
       const client = createClient(Object.assign({}, opts, {url}));
       clients.push(client);
 
-      client.on("connect", function() {
-        const winner = this;
+      client.on("connect", () => {
+        const winner = client;
         cb(null, winner);
 
         // destroy other clients
