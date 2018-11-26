@@ -17,7 +17,7 @@ module.exports.createClient = (opts, cb) => {
       clients.push(client);
 
       client.on("connect", () => {
-        const winner = this;
+        const winner = client;
         cb(null, winner);
 
         // destroy other clients
