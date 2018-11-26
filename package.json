@@ -1,6 +1,6 @@
 {
   "name": "multi-ldap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "silverwind <me@silverwind.io>",
   "description": "ldapjs client wrapper with support for multiple servers",
   "repository": "silverwind/multi-ldap",
