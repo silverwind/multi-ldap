@@ -1,17 +1,15 @@
-BIN:=node_modules/.bin
-
 test:
-	$(BIN)/eslint --color --quiet *.js
-	node --trace-deprecation --throw-deprecation --trace-warnings test.js
+	npx eslint --color --quiet *.js
 
 publish:
 	git push -u --tags origin master
 	npm publish
 
 update:
-	$(BIN)/updates -u
+	npx updates -cu
 	rm -rf node_modules
-	yarn
+	npm i --no-package-lock
+	rm -rf node_modules/dtrace-provider
 
 npm-patch:
 	npm version patch
