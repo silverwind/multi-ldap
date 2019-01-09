@@ -11,13 +11,16 @@ module.exports.createClient = (opts, cb) => {
     cb = onetime(cb);
     const clients = [];
     const errors = {};
+    let winner = null;
 
     opts.url.forEach(url => {
       const client = createClient(Object.assign({}, opts, {url}));
       clients.push(client);
 
       client.on("connect", () => {
-        const winner = client;
+        if (winner) return;
+
+        winner = client;
         cb(null, winner);
 
         // destroy other clients
